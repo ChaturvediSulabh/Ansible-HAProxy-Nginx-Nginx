@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
       end
       controller.vm.provision :shell, path: "ansible-bootstrap.sh"
       controller.vm.provision :shell, path: "common-bootstrap.sh"
-      controller.vm.provision :file, source: "/Users/schaturvedi/Desktop/CELERAONE_APP_TASK_SUBMISSION/Production", destination: "/home/vagrant/"
+      controller.vm.provision :file, source: "/Production", destination: "/home/vagrant/"
 
   end
 
