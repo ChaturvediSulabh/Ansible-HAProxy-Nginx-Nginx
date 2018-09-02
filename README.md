@@ -12,7 +12,7 @@ Using Ansible configure HAProxy and Nginx Servers with a behavior illustrated be
 5. Nginx Location directive rules are as follows
   1. /probe\_local should show the contents of /var/www/local.html
   2. /probe\_applicant&quot; should return your availability for being 24/7 on-call at CeleraOne (shared with other team members)
-  3. /\* forwarded to [http://www.celeraone.com](http://www.celeraone.com)
+  3. /\* forwarded to [http://www.google.com](http://www.google.com)
   4. /probe\_remote orwarded to localhost:5500
 6. Key configurations like those of Kernel, CPU, Selinux etc. must be taken into an account
 
