@@ -1,0 +1,7 @@
+---
+- import_tasks: install_nginx.yaml
+- import_tasks: selinux_nginx.yaml
+- import_tasks: nginx_config.yaml
+- import_tasks: nginx_sysctl.yaml
+- import_tasks: set-up-a-simple-nodejs-ws-listen5500.yaml
+...

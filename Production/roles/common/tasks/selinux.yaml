@@ -1,0 +1,13 @@
+---
+- name: Test to see if selinux is running
+  command: getenforce
+  register: sestatus
+  changed_when: false
+
+- name: Set httpd_can_network_connect flag on and keep it persistent across reboots
+  seboolean:
+    name: httpd_can_network_connect
+    state: yes
+    persistent: yes
+
+...

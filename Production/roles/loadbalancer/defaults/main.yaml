@@ -1,0 +1,10 @@
+---
+haproxy_usr: root
+mode: http   # layer 7 proxy
+listenport: 80
+backend_srv_port: 8000
+balance: roundrobin
+haproxy_procs: "{{ ansible_processor_vcpus|default(ansible_processor_count) }}"
+# interface: '{{ ansible_default_ipv4.interface }}' -- This leads me to eth0
+interface: eth1 
+...

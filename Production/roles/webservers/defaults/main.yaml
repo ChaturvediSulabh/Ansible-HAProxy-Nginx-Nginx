@@ -1,0 +1,9 @@
+---
+ngx_port: 8000
+ngx_user: nginx
+nginx_binary_name: nginx
+nginx_conf_dir: /etc/nginx
+nginx_official_repo_mainline: False
+ngx_worker_rlimit_nofile: 4096
+ngx_worker_connections: 1024
+...

@@ -1,0 +1,21 @@
+---
+- name: install nginx and npm
+  package: name={{ item }} state=present
+  with_items:
+    - nginx
+    - npm
+
+- name: Allow nginx to listen on port 8000
+  seport:
+    ports: 8000
+    proto: tcp
+    setype: http_port_t
+    state: present
+
+- name: Enable service nginx
+  service:
+    name: nginx
+    enabled: yes
+    state: started
+  become: yes
+...

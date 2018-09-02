@@ -1,0 +1,10 @@
+---
+- name: Install HAProxy
+  package:  name=haproxy state=installed
+
+- name: Enable service HAProxy
+  service:
+    name: haproxy
+    enabled: yes
+    state: started
+...

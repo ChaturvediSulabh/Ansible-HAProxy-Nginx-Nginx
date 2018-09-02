@@ -1,0 +1,29 @@
+---
+- name: setup a simple hello world nodejs web server listening on port 5500
+  copy:
+    src: files/simple-nodejs-ws.js
+    dest: /home/vagrant
+    owner: vagrant
+    group: vagrant
+    mode: 0770
+  notify:
+    start node app
+
+- name: Update rc.local /etc so that node app can survive reboot
+  template:
+    src: templates/rc.local.j2
+    dest: /etc/rc.local
+    owner: root
+    group: root
+    mode: 770
+  become: yes
+
+- name: Update rc.local /etc/init.d so that node app can survive reboot
+  template:
+    src: templates/rc.local.j2
+    dest: /etc/init.d/rc.local
+    owner: root
+    group: root
+    mode: 770
+  become: yes
+...

@@ -1,0 +1,8 @@
+---
+- name: Allow nginx to listen on port 8000
+  seport:
+    ports: 8000
+    proto: tcp
+    setype: http_port_t
+    state: present
+...

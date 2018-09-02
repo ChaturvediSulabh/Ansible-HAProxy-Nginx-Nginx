@@ -1,0 +1,6 @@
+---
+- import_tasks: install_haproxy.yaml
+- import_tasks: haproxy_cfg.yaml
+- import_tasks: haproxy_sysctl.yaml
+- import_tasks: configure_rsyslog.yaml
+...

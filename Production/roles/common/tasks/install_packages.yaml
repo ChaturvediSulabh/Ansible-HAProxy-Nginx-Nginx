@@ -1,0 +1,9 @@
+---
+- name: install packages on all hosts
+  package: name={{ item }} state=present
+  with_items:
+    - epel-release
+    - libselinux-python
+    - libsemanage-python
+    - policycoreutils-python
+...

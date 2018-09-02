@@ -1,0 +1,7 @@
+---
+# This role contains common plays that will run on all nodes.
+- import_tasks: install_packages.yaml
+- import_tasks: setup_etc_hosts.yaml
+- import_tasks: iptables.yaml
+- import_tasks: selinux.yaml
+...

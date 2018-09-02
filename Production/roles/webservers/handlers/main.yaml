@@ -1,0 +1,7 @@
+---
+- name: reload nginx
+  service: name=nginx state=reloaded
+- name: start node app
+  shell: nohup node /home/vagrant/simple-nodejs-ws.js &
+  become: yes
+...

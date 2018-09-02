@@ -1,0 +1,30 @@
+---
+
+# common
+- hosts: all
+  become: yes
+  gather_facts: yes
+  connection: ssh
+
+  roles:
+    - common
+
+# webservers
+- hosts: webservers
+  become: yes
+  gather_facts: yes
+  connection: ssh
+
+  roles:
+    - webservers
+
+# loadbalancer
+- hosts: loadbalancer
+  become: yes
+  gather_facts: yes
+  connection: ssh
+
+  roles:
+    - loadbalancer
+
+...

@@ -1,0 +1,72 @@
+# {{ ansible_managed }}
+global
+    log         127.0.0.1 local2 #Log configuration
+
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     4000
+    nbproc      {{ haproxy_procs }}
+{% for cpu_idx in range(0,haproxy_procs | int) %}
+  cpu-map {{ cpu_idx+1 }} {{ cpu_idx }}
+{% endfor %}
+    stats       bind-process {{ haproxy_procs }}
+    user        {{ haproxy_usr }}
+    group       {{ haproxy_usr }}
+    daemon
+
+    # turn on stats unix socket
+    stats socket /var/lib/haproxy/stats level admin
+
+defaults
+    mode                    {{ mode }}
+    log                     global
+    option                  httplog
+    option                  dontlognull
+    option http-server-close
+    option forwardfor       except 127.0.0.0/8
+    option                  redispatch
+    retries                 3
+    timeout http-request    10s
+    timeout queue           1m
+    timeout connect         10s
+    timeout client          1m
+    timeout server          1m
+    timeout http-keep-alive 10s
+    timeout check           10s
+    maxconn                 3000
+
+frontend main
+    bind *:{{ listenport }}
+    #option http-server-close
+    mode {{ mode  }}
+    default_backend app
+
+backend app
+  balance {{ balance }}                                    # Balance algorithm
+  option httplog
+  http-request set-header X-Forwarded-Port %[dst_port]
+  option tcp-check
+  tcp-check connect
+  tcp-check send GET\ /probe_local\ HTTP/1.1\r\n
+  tcp-check send Host:\ localhost\r\n
+  tcp-check send \r\n
+  tcp-check expect rstring (2..|3..)
+  tcp-check connect
+  tcp-check send GET\ /probe_applicant\ HTTP/1.1\r\n
+  tcp-check send Host:\ localhost\r\n
+  tcp-check send \r\n
+  tcp-check expect rstring (2..|3..)
+  tcp-check connect
+  tcp-check send GET\ /probe_remote\ HTTP/1.1\r\n
+  tcp-check send Host:\ localhost\r\n
+  tcp-check send \r\n
+  tcp-check expect rstring (2..|3..)
+  tcp-check connect
+  tcp-check send GET\ /*\ HTTP/1.1\r\n
+  tcp-check send Host:\ localhost\r\n
+  tcp-check send \r\n
+  tcp-check expect rstring (2..|3..)
+{% for host in groups.webservers %}
+  server {{ host }} {{ hostvars[host]['ansible_'+interface].ipv4.address }}:{{ backend_srv_port }} check inter 5s fall 5 rise 3
+{% endfor %}
+

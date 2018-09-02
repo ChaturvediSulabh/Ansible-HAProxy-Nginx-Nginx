@@ -1,0 +1,14 @@
+#!/bin/sh -e
+# #{{ ansible_managed }}
+# This script will be executed *after* all the other init scripts.
+# You can put your own initialization stuff in here if you don't
+# want to do the full Sys V style init stuff.
+exec 2> /tmp/rc.local.log      # send stderr from rc.local to a log file
+exec 1>&2                      # send stdout to the same log file
+set -x                         # tell sh to display commands before execution
+
+touch /var/lock/subsys/local
+
+/usr/bin/sudo -u vagrant /usr/bin/node /home/vagrant/simple-nodejs-ws.js
+
+exit 0
