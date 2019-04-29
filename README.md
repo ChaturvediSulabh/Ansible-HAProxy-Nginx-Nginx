@@ -1,4 +1,4 @@
-# Ansible-HAProxy-Nginx-Nginx
+# Introduction
 Using Ansible Configure HAproxy with Two Nginx Backends
 
 ## SPECIFICATIONS
