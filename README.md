@@ -3,17 +3,22 @@ Using Ansible Configure HAproxy with Two Nginx Backends
 
 ## Specs
 
-Using Ansible configure HAProxy and Nginx Servers with a behavior illustrated below
+Using `Ansible` configure `HAProxy` and `Nginx` Servers with a behavior illustrated below
 
-1. There are three Cent OS 6 VMs viz. HAproxy/Test1 (192.168.30.1), Nginx/Test2 (192.168.30.2) and Nginx/Test3 (192.168.30.3)
-2. HAProxy is installed and listens on port 80
-3. HAProxy backend comprises of two Nginx server and that, are load balanced
-4. Nginx is installed and listens on port 8000
-5. Nginx Location directive rules are as follows
-  1. /probe\_local should show the contents of /var/www/local.html
-  2. /probe\_applicant&quot; should return your availability for being 24/7 on-call 
-  3. /\* forwarded to [http://www.google.com](http://www.google.com)
-  4. /probe\_remote orwarded to localhost:5500
+1. There are three Cent OS 6 VMs viz. 
+   ```
+   - HAproxy/Test1 (192.168.30.1)
+   - Nginx/Test2 (192.168.30.2)
+   - Nginx/Test3 (192.168.30.3)
+   ```
+2. `HAProxy` is installed and listens on port `80`
+3. `HAProxy` backend comprises of two `Nginx` server and that, are load balanced
+4. `Nginx` is installed and listens on port `8000`
+5. `Nginx` Location directive rules are as follows
+    -  ```/probe\_local``` should show the contents of ```/var/www/local.html```
+    - ```/probe\_applicant``` should return your availability for being 24/7 on-call 
+    - ```/\*``` forwarded to [http://www.google.com](http://www.google.com)
+    - ```/probe\_remote``` orwarded to ```localhost:5500```
 6. Key configurations like those of Kernel, CPU, Selinux etc. must be taken into an account
 
 
