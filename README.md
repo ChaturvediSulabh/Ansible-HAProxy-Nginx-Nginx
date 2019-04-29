@@ -41,9 +41,9 @@ Copy Playbooks from my local machine to controller. Then, the other machines whi
 ``` 
 created and are provisioned using `common-bootstrap.sh`. Login on each machine is done by `vagrant ssh` and set a passwordless SSH access from Controller (Ansible) to rest of the Machines. By doing simple steps
 ```
-  1. ssh-keygen – To generate SSH KEY
-  2. ssh-keygen -R 192.168.30.x \&gt;\&gt; ~vagrant/.ssh/known\_hosts  - Add to known hosts (x = 1, 2, 3 respectively)
+  1. ssh-keygen # – generate SSH KEY
+  2. ssh-keygen -R 192.168.30.x /~vagrant/.ssh/known_hosts  # - Add to known hosts (x = 1, 2, 3 respectively)
   3. Did the same as above for hostnames viz Test1, Test2 and Test3 respectively
-  4. ssh-copy-id for above hosts/ips to update authorized\_keys
+  4. ssh-copy-id # for above hosts/ips to update authorized\_keys
      -- user vagrant, password vagrant
 ```
