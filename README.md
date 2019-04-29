@@ -1,7 +1,7 @@
-# Introduction
+## Introduction
 Using Ansible Configure HAproxy with Two Nginx Backends
 
-## SPECIFICATIONS
+## Specs
 
 Using Ansible configure HAProxy and Nginx Servers with a behavior illustrated below
 
@@ -18,7 +18,7 @@ Using Ansible configure HAProxy and Nginx Servers with a behavior illustrated be
 
 
 
-## SETUP VM
+## Setup
 I've used Vagrant to create VMs on MacBook pro machine. Since, the installation and vagrant overview is out of scope of this document. So, I'll focus strictly on, on How did I use Vagrant. However, click on [Getting Started with Vagrant](https://www.vagrantup.com/intro/index.html) to know more on vagrant.
 
 The Controller (Ansible) machine is provisioned using following
