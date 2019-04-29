@@ -17,7 +17,7 @@ Using `Ansible` configure `HAProxy` and `Nginx` Servers with a behavior illustra
 5. `Nginx` Location directive rules are as follows
     -  ```/probe\_local``` should show the contents of ```/var/www/local.html```
     - ```/probe\_applicant``` should return your availability for being 24/7 on-call 
-    - ```/\*``` forwarded to [http://www.google.com](http://www.google.com)
+    - ```/\*``` forwarded to [google](http://www.google.com)
     - ```/probe\_remote``` orwarded to ```localhost:5500```
 6. Key configurations like those of Kernel, CPU, Selinux etc. must be taken into an account
 
